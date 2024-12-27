@@ -1,0 +1,5 @@
+package com.noyon.main.entity;
+
+public class Room {
+
+}
