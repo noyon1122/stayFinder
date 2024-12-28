@@ -1,0 +1,5 @@
+package com.noyon.main.repository;
+
+public interface RoomRepository {
+
+}

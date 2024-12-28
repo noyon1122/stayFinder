@@ -1,0 +1,5 @@
+package com.noyon.main.security;
+
+public class CorsConfig {
+
+}

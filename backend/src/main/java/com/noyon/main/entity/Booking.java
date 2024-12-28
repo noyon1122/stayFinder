@@ -98,6 +98,23 @@ public class Booking {
 	public void setBookingConfirmationCode(String bookingConfirmationCode) {
 		BookingConfirmationCode = bookingConfirmationCode;
 	}
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
 	public Booking(int id, LocalDate checkInDate, LocalDate checkOutDate, int numOfAdults, int numOfChildren,
 			int totalNumofGuests, String bookingConfirmationCode, User user, Room room) {
