@@ -31,7 +31,7 @@ public class Booking {
 	private int numOfChildren;
 	private int totalNumofGuests;
 	
-	private String BookingConfirmationCode;
+	private String code;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
@@ -91,12 +91,12 @@ public class Booking {
 		this.totalNumofGuests = totalNumofGuests;
 	}
 
-	public String getBookingConfirmationCode() {
-		return BookingConfirmationCode;
+	public String getCode() {
+		return code;
 	}
 
-	public void setBookingConfirmationCode(String bookingConfirmationCode) {
-		BookingConfirmationCode = bookingConfirmationCode;
+	public void setBookingConfirmationCode(String code) {
+		this.code = code;
 	}
 	
 
@@ -117,7 +117,7 @@ public class Booking {
 	}
 
 	public Booking(int id, LocalDate checkInDate, LocalDate checkOutDate, int numOfAdults, int numOfChildren,
-			int totalNumofGuests, String bookingConfirmationCode, User user, Room room) {
+			int totalNumofGuests, String code, User user, Room room) {
 		super();
 		this.id = id;
 		this.checkInDate = checkInDate;
@@ -125,7 +125,7 @@ public class Booking {
 		this.numOfAdults = numOfAdults;
 		this.numOfChildren = numOfChildren;
 		this.totalNumofGuests = totalNumofGuests;
-		BookingConfirmationCode = bookingConfirmationCode;
+		this.code = code;
 		this.user = user;
 		this.room = room;
 	}

@@ -1,0 +1,5 @@
+package com.noyon.main.service.impl;
+
+public class UserServiceImpl {
+
+}

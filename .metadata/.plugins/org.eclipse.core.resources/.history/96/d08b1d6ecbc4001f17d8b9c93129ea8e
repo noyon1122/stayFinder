@@ -1,0 +1,5 @@
+package com.noyon.main.service;
+
+public interface BookingService {
+
+}

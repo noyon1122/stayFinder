@@ -15,7 +15,7 @@ public class BookingDTO {
 	private int numOfAdults;
 	private int numOfChildren;
 	private int totalNumOfGuest;
-	private String bookingConfirmationCode;
+	private String code;
 	
 	private UserDTO user;
 	private RoomDTO room;
@@ -55,11 +55,11 @@ public class BookingDTO {
 	public void setTotalNumOfGuest(int totalNumOfGuest) {
 		this.totalNumOfGuest = totalNumOfGuest;
 	}
-	public String getBookingConfirmationCode() {
-		return bookingConfirmationCode;
+	public String getCode() {
+		return code;
 	}
-	public void setBookingConfirmationCode(String bookingConfirmationCode) {
-		this.bookingConfirmationCode = bookingConfirmationCode;
+	public void setCode(String code) {
+		this.code = code;
 	}
 	public UserDTO getUser() {
 		return user;
@@ -74,7 +74,7 @@ public class BookingDTO {
 		this.room = room;
 	}
 	public BookingDTO(int id, LocalDate checkInDate, LocalDate checkOutDate, int numOfAdults, int numOfChildren,
-			int totalNumOfGuest, String bookingConfirmationCode, UserDTO user, RoomDTO room) {
+			int totalNumOfGuest, String code, UserDTO user, RoomDTO room) {
 		super();
 		this.id = id;
 		this.checkInDate = checkInDate;
@@ -82,7 +82,7 @@ public class BookingDTO {
 		this.numOfAdults = numOfAdults;
 		this.numOfChildren = numOfChildren;
 		this.totalNumOfGuest = totalNumOfGuest;
-		this.bookingConfirmationCode = bookingConfirmationCode;
+		this.code = code;
 		this.user = user;
 		this.room = room;
 	}
