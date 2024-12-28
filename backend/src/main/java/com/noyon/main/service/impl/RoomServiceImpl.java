@@ -1,10 +1,16 @@
 package com.noyon.main.service.impl;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,8 +31,10 @@ public class RoomServiceImpl implements RoomService {
 	    @Autowired
 	    private RoomRepository roomRepository;
 	  
-//	    @Autowired
-//	    private AwsS3Service awsS3Service;
+
+	    
+	    @Value("src/main/resources/static/images")
+		private String uploadDir;
 
 
 	    @Override
@@ -35,10 +43,11 @@ public class RoomServiceImpl implements RoomService {
 
 	        try {
 
-	           // String imageUrl = awsS3Service.saveImageToS3(photo);
-	            Room room = new Room();
+	           	Room room = new Room();
+	            String imageUrl = saveImage(roomType,photo);
 
-	           // room.setRoomPhotoUrl(imageUrl);
+      
+	            room.setRoomPhotoUrl(imageUrl);
 	            room.setRoomType(roomType);
 	            room.setRoomPrice(roomPrice);
 	            room.setRoomDescription(description);
@@ -112,17 +121,17 @@ public class RoomServiceImpl implements RoomService {
 	        Response response = new Response();
 
 	        try {
-//	            String imageUrl = null;
-//
-//	            if (photo != null && !photo.isEmpty()){
-//	                imageUrl = awsS3Service.saveImageToS3(photo);
-//	            }
+	            String imageUrl = null;
+                
+	            if (photo != null && !photo.isEmpty()){
+	                imageUrl =saveImage(roomType,photo);
+	            }
 
 	            Room room = roomRepository.findById(roomId).orElseThrow(()-> new CustomException("Room Not Found"));
 	            if(roomType != null) room.setRoomType(roomType);
 	            if (roomPrice != null) room.setRoomPrice(roomPrice);
 	            if (description != null) room.setRoomDescription(description);
-	           // if (imageUrl != null) room.setRoomPhotoUrl(imageUrl);
+	            if (imageUrl != null) room.setRoomPhotoUrl(imageUrl);
 
 	            Room updatedRoom = roomRepository.save(room);
 	            RoomDTO roomDTO = Utils.mapRoomEntityToRoomDTO(updatedRoom);
@@ -205,4 +214,23 @@ public class RoomServiceImpl implements RoomService {
 	        }
 	        return response;
 	    }
+	    
+	  //mathod for image save
+	  		private String saveImage(String roomType,MultipartFile file) throws IOException
+	  		{
+	  			Path uploadPath=Paths.get(uploadDir+"/rooms");
+	  			
+	  			if(!Files.exists(uploadPath))
+	  			{
+	  				Files.createDirectories(uploadPath);
+	  			}
+	  			
+	  			String fileName=roomType+"_"+UUID.randomUUID().toString();
+	  			
+	  			Path filePath=uploadPath.resolve(fileName);
+	  			
+	  			Files.copy(file.getInputStream(),filePath);
+	  			
+	  			return fileName;
+	  		}
 }

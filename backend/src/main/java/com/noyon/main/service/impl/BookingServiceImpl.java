@@ -1,11 +1,8 @@
 package com.noyon.main.service.impl;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import com.noyon.main.dto.BookingDTO;
 import com.noyon.main.dto.Response;
 import com.noyon.main.entity.Booking;
@@ -16,7 +13,6 @@ import com.noyon.main.repository.BookingRepository;
 import com.noyon.main.repository.RoomRepository;
 import com.noyon.main.repository.UserRepository;
 import com.noyon.main.service.BookingService;
-
 import com.noyon.main.utils.Utils;
 
 @Service
@@ -28,7 +24,9 @@ public class BookingServiceImpl implements BookingService {
 	    private RoomRepository roomRepository;
 	    @Autowired
 	    private UserRepository userRepository;
-
+	    
+	    
+	
 
 	    @Override
 	    public Response saveBooking(int rooId, int userId, Booking bookingRequest) {
@@ -152,4 +150,6 @@ public class BookingServiceImpl implements BookingService {
 	                );
 
 	    }
+	    
+	    
 }

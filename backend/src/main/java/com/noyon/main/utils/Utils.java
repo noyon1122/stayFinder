@@ -87,10 +87,11 @@ public class Utils {
         bookingDTO.setNumOfAdults(booking.getNumOfAdults());
         bookingDTO.setTotalNumOfGuest(booking.getTotalNumofGuests());
         bookingDTO.setCode(booking.getCode());
-
+        
         if (mapUser) {
             bookingDTO.setUser(Utils.mapUserEntityToUserDTO(booking.getUser()));
         }
+      
 
         if (booking.getRoom() != null) {
 

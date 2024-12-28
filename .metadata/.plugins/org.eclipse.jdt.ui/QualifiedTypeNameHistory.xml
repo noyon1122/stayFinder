@@ -17,4 +17,5 @@
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="com.noyon.main.dto.UserDTO"/>
     <fullyQualifiedTypeName name="com.noyon.main.dto.RoomDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetails"/>
 </qualifiedTypeNameHistroy>

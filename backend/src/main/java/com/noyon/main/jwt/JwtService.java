@@ -15,8 +15,6 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-//	@Autowired
-//	private TokenRepository tokenRepository;
 	private final String SECRET_KEY="dassdkjfsdjierwkjdfdskdfsjklnoyondsjksdkfhk"; //generated it from web site 
 	
 	//extract allClaims from token
@@ -33,7 +31,7 @@ public class JwtService {
 	
 	//generated Token
 	
-	public String generatedToken(User user)
+	public String generatedToken(UserDetails user)
 	{
 		return Jwts
 			   .builder()

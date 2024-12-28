@@ -1,0 +1,5 @@
+package com.noyon.main.configuration;
+
+public class WebConfig {
+
+}

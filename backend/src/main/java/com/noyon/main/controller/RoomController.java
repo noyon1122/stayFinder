@@ -29,9 +29,6 @@ public class RoomController {
 	  @Autowired
 	    private RoomService roomService;
 
-	    @Autowired
-	    private BookingService bookingService;
-
 	    @PostMapping("/add")
 	    @PreAuthorize("hasAuthority('ADMIN')")
 	    public ResponseEntity<Response> addNewRoom(
